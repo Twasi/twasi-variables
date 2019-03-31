@@ -4,8 +4,8 @@ version: 1.0-SNAPSHOT
 author: Twasi-Team
 
 commands:
-  - variable
-  - var
+  - setvar
+  - delvar
 
 permissions:
   - net.twasi.variables.update

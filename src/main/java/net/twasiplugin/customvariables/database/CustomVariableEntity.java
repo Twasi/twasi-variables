@@ -15,20 +15,13 @@ public class CustomVariableEntity extends BaseEntity {
     private String variable;
     private String output;
 
-    private PermissionGroups permissionGroup;
-
     public CustomVariableEntity() {
     }
 
-    public CustomVariableEntity(User user, String variable, String output, PermissionGroups permissionGroup) {
+    public CustomVariableEntity(User user, String variable, String output) {
         this.user = user;
         this.variable = variable.toLowerCase();
         this.output = output;
-        this.permissionGroup = permissionGroup;
-    }
-
-    public CustomVariableEntity(User user, String variable, String output) {
-        this(user, variable, output, PermissionGroups.VIEWER);
     }
 
     public User getUser() {
@@ -53,13 +46,5 @@ public class CustomVariableEntity extends BaseEntity {
 
     public void setOutput(String output) {
         this.output = output;
-    }
-
-    public PermissionGroups getPermissionGroup() {
-        return permissionGroup;
-    }
-
-    public void setPermissionGroup(PermissionGroups permissionGroup) {
-        this.permissionGroup = permissionGroup;
     }
 }

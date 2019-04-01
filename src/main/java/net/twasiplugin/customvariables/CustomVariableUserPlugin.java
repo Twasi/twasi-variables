@@ -2,21 +2,33 @@ package net.twasiplugin.customvariables;
 
 import net.twasi.core.plugin.api.TwasiUserPlugin;
 import net.twasi.core.plugin.api.TwasiVariable;
+import net.twasi.core.plugin.api.customcommands.TwasiCustomCommand;
+import net.twasi.core.plugin.api.customcommands.TwasiPluginCommand;
 import net.twasi.core.plugin.api.events.TwasiEnableEvent;
 import net.twasi.core.plugin.api.events.TwasiInstallEvent;
 import net.twasi.core.services.ServiceRegistry;
 import net.twasi.core.services.providers.DataService;
+import net.twasiplugin.customvariables.commands.DelVariableCommand;
+import net.twasiplugin.customvariables.commands.SetVariableCommand;
 import net.twasiplugin.customvariables.database.CustomVariableEntity;
 import net.twasiplugin.customvariables.database.CustomVariableRepository;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.ServiceConfigurationError;
 
 public class CustomVariableUserPlugin extends TwasiUserPlugin {
 
     private HashMap<String, TwasiCustomVariable> variables = new HashMap<>();
+    private List<TwasiPluginCommand> commands;
+
+    public CustomVariableUserPlugin() {
+        this.commands = Arrays.asList(
+                new DelVariableCommand(this),
+                new SetVariableCommand(this)
+        );
+    }
 
     @Override
     public void onInstall(TwasiInstallEvent e) {
@@ -32,13 +44,19 @@ public class CustomVariableUserPlugin extends TwasiUserPlugin {
 
     @Override
     public void onEnable(TwasiEnableEvent e) {
-        for (CustomVariableEntity var : ServiceRegistry.get(DataService.class).get(CustomVariableRepository.class).getEntitesByUser(getTwasiInterface().getStreamer().getUser())) {
-            variables.put(var.getVariable(), new TwasiCustomVariable(this, var.getVariable(), var.getOutput(), var.getPermissionGroup()));
+        for (CustomVariableEntity var : ServiceRegistry.get(DataService.class).get(CustomVariableRepository.class).getVariablesByUser(getTwasiInterface().getStreamer().getUser())) {
+            variables.put(var.getVariable(), new TwasiCustomVariable(this, var));
         }
     }
+
 
     @Override
     public List<TwasiVariable> getVariables() {
         return new ArrayList<>(this.variables.values());
+    }
+
+    @Override
+    public List<TwasiPluginCommand> getCommands() {
+        return this.commands;
     }
 }

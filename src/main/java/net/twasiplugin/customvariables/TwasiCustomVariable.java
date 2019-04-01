@@ -5,6 +5,7 @@ import net.twasi.core.interfaces.api.TwasiInterface;
 import net.twasi.core.models.Message.TwasiMessage;
 import net.twasi.core.plugin.api.TwasiUserPlugin;
 import net.twasi.core.plugin.api.TwasiVariable;
+import net.twasiplugin.customvariables.database.CustomVariableEntity;
 
 import java.util.Collections;
 import java.util.List;
@@ -13,13 +14,15 @@ public class TwasiCustomVariable extends TwasiVariable {
 
     private String name;
     private String output;
-    private PermissionGroups permissionGroup;
 
-    public TwasiCustomVariable(TwasiUserPlugin owner, String name, String output, PermissionGroups permissionGroup) {
+    public TwasiCustomVariable(TwasiUserPlugin owner, String name, String output) {
         super(owner);
         this.name = name;
         this.output = output;
-        this.permissionGroup = permissionGroup;
+    }
+
+    public TwasiCustomVariable(TwasiUserPlugin owner, CustomVariableEntity entity) {
+        this(owner, entity.getVariable(), entity.getOutput());
     }
 
     @Override
@@ -29,8 +32,6 @@ public class TwasiCustomVariable extends TwasiVariable {
 
     @Override
     public String process(String name, TwasiInterface inf, String[] params, TwasiMessage message) {
-        if (message.getSender().getGroups().contains(this.permissionGroup))
-            return this.output;
-        return null;
+        return this.output;
     }
 }

@@ -1,3 +1,11 @@
+plugin.title=Variablen
+plugin.description=Add custom variables to your chat and use them in as many commands as you wish!
+
 twasi.variables.created=Die Variable %s wurde erfolgreich erstellt, %s BrokeBack
 twasi.variables.edited=%s wurde bearbeitet, %s! :)
 twasi.variables.deleted=%s, du hast die Variable %s gelöscht KevinTurtle
+
+twasi.variables.otherplugin=%s, die Variable %s existiert schon bei einem anderen Plugin BibleThump
+
+twasi.variables.helptext.delete=%s, um eine Variable zu löschen nutze "!delvar [Name]" HassanChop
+twasi.variables.helptext.set=%s, um setzen einer Variable nutze "!setvar [Name] [Ausgabe]" MingLee

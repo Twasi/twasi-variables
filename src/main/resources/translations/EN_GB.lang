@@ -1,3 +1,11 @@
+plugin.title=Variables
+plugin.description=Füge eigene Variablen hinzu und nutze sie in so vielen Commands du willst!
+
 twasi.variables.created=The variable %s was created successfully, %s BrokeBack
 twasi.variables.edited=%s was updated, %s! :)
 twasi.variables.deleted=%s, you deleted the variable %s KevinTurtle
+
+twasi.variables.otherplugin=%s, the variable %s already exists for another plugin BibleThump
+
+twasi.variables.helptext.delete=%s, to delete a variables use "!delvar [Name]" HassanChop
+twasi.variables.helptext.set=%s, to set a variable use "!setvar [Name] [Ausgabe]" MingLee

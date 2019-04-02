@@ -1,4 +1,4 @@
-name: "Twasi Custom Variables"
+name: "customvariables"
 main: net.twasiplugin.customvariables.CustomVariablePlugin
 version: 1.0-SNAPSHOT
 author: Twasi-Team

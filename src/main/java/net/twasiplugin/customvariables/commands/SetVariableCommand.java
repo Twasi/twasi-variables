@@ -1,7 +1,6 @@
 package net.twasiplugin.customvariables.commands;
 
 import net.twasi.core.database.models.User;
-import net.twasi.core.plugin.api.TwasiUserPlugin;
 import net.twasi.core.plugin.api.customcommands.TwasiCustomCommandEvent;
 import net.twasi.core.plugin.api.customcommands.TwasiPluginCommand;
 import net.twasi.core.services.ServiceRegistry;
@@ -65,7 +64,7 @@ public class SetVariableCommand extends TwasiPluginCommand {
                 if (entity != null) {
                     e.reply(getTranslation("twasi.variables.content", sender, name, entity.getOutput(), name));
                 } else {
-                    e.reply(getTranslation("twasi.variables.invalidvar", sender));
+                    e.reply(getTranslation("twasi.variables.invalidvar", sender, name));
                 }
             }
         } else {

@@ -1,10 +1,9 @@
 package net.twasiplugin.customvariables.database;
 
-import jdk.nashorn.internal.ir.annotations.Reference;
 import net.twasi.core.database.models.BaseEntity;
 import net.twasi.core.database.models.User;
-import net.twasi.core.database.models.permissions.PermissionGroups;
 import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Reference;
 
 @Entity(value = "customvariables", noClassnameStored = true)
 public class CustomVariableEntity extends BaseEntity {

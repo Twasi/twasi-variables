@@ -7,6 +7,9 @@ twasi.variables.deleted=%s, you deleted the variable %s KevinTurtle
 
 twasi.variables.otherplugin=%s, the variable %s already exists for another plugin BibleThump
 twasi.variables.invalidname=%s, variables have to start with a letter and may only contain letters and numbers 4Head
+twasi.variables.invalidvar=%s, the variable %s doesn't exist :(
 
-twasi.variables.helptext.delete=%s, to delete a variables use "!delvar [Name]" HassanChop
-twasi.variables.helptext.set=%s, to set a variable use "!setvar [Name] [Ausgabe]" MingLee
+twasi.variables.helptext.delete=%s, to delete a variables use "!delvar [name]" HassanChop
+twasi.variables.helptext.set=%s, to set a variable use "!setvar [name] [output]" MingLee
+
+twasi.variables.content=%s, the variable %s currently responds "%s". To change it use "!setvar %s [output]" MingLee

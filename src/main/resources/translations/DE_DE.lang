@@ -11,3 +11,5 @@ twasi.variables.invalidvar=%s, die Variable %s existiert nicht :(
 
 twasi.variables.helptext.delete=%s, um eine Variable zu löschen nutze "!delvar [Name]" HassanChop
 twasi.variables.helptext.set=%s, zum setzen einer Variable nutze "!setvar [Name] [Ausgabe]" MingLee
+
+twasi.variables.content=%s, die Variable %s gibt zur Zeit "%s" zurück. Um sie zu ändern nutze "!setvar %s [Ausgabe]" MingLee

@@ -34,4 +34,12 @@ public class TwasiCustomVariable extends TwasiVariable {
     public String process(String name, TwasiInterface inf, String[] params, TwasiMessage message) {
         return this.output;
     }
+
+    public String getOutput() {
+        return output;
+    }
+
+    public void setOutput(String output) {
+        this.output = output;
+    }
 }

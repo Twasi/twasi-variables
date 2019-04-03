@@ -1,5 +1,6 @@
 package net.twasiplugin.customvariables;
 
+import com.sun.javafx.collections.MappingChange;
 import net.twasi.core.plugin.api.TwasiUserPlugin;
 import net.twasi.core.plugin.api.TwasiVariable;
 import net.twasi.core.plugin.api.customcommands.TwasiCustomCommand;
@@ -45,7 +46,7 @@ public class CustomVariableUserPlugin extends TwasiUserPlugin {
     @Override
     public void onEnable(TwasiEnableEvent e) {
         for (CustomVariableEntity var : ServiceRegistry.get(DataService.class).get(CustomVariableRepository.class).getVariablesByUser(getTwasiInterface().getStreamer().getUser())) {
-            variables.put(var.getVariable(), new TwasiCustomVariable(this, var));
+            variables.put(var.getVariable().toLowerCase(), new TwasiCustomVariable(this, var));
         }
     }
 
@@ -53,6 +54,10 @@ public class CustomVariableUserPlugin extends TwasiUserPlugin {
     @Override
     public List<TwasiVariable> getVariables() {
         return new ArrayList<>(this.variables.values());
+    }
+
+    public HashMap<String, TwasiCustomVariable> getRegisteredVars() {
+        return this.variables;
     }
 
     @Override

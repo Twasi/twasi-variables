@@ -13,8 +13,8 @@ import net.twasiplugin.customvariables.database.CustomVariableRepository;
 
 public class SetVariableCommand extends TwasiPluginCommand {
 
-    private CustomVariableUserPlugin tup;
-    private CustomVariableRepository repo;
+    private final CustomVariableUserPlugin tup;
+    private final CustomVariableRepository repo;
 
     public SetVariableCommand(CustomVariableUserPlugin twasiUserPlugin) {
         super(twasiUserPlugin);

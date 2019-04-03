@@ -1,13 +1,13 @@
 name: "customvariables"
-main: net.twasiplugin.customvariables.CustomVariablePlugin
-version: 1.0-SNAPSHOT
-author: Twasi-Team
+main: "net.twasiplugin.customvariables.CustomVariablePlugin"
+version: "1.0-SNAPSHOT"
+author: "Twasi-Team"
 
 commands:
   - setvar
   - delvar
 
 permissions:
-  - net.twasi.variables.update
-  - net.twasi.variables.create
-  - net.twasi.variables.delete
+  - "net.twasi.variables.update"
+  - "net.twasi.variables.create"
+  - "net.twasi.variables.delete"

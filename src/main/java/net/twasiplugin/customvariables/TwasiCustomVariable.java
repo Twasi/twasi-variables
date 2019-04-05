@@ -1,6 +1,5 @@
 package net.twasiplugin.customvariables;
 
-import net.twasi.core.database.models.permissions.PermissionGroups;
 import net.twasi.core.interfaces.api.TwasiInterface;
 import net.twasi.core.models.Message.TwasiMessage;
 import net.twasi.core.plugin.api.TwasiUserPlugin;

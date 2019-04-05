@@ -17,7 +17,7 @@ api: |
     variableByName(varName: String): Variable,
     allVariables: [Variable],
     addVariable(name: String, output: String): Boolean,
-    removeVariableByName(name: String)
+    removeVariableByName(name: String): Boolean
   }
 
   type Variable {

@@ -34,4 +34,14 @@ public class VariableCollectionDTO {
         return service.removeVariableByName(user, name);
     }
 
+    public boolean renameVariable(String name, String newName) {
+        VariableDTO variable = getVariableByName(name);
+        if (variable == null) return false;
+        if (addVariable(newName, variable.getOutput())) {
+            removeVariableByName(name);
+            return true;
+        }
+        return false;
+    }
+
 }

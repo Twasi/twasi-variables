@@ -30,18 +30,20 @@ public class VariableCollectionDTO {
         return service.addVariable(user, name, output);
     }
 
-    public boolean removeVariableByName(String name) {
-        return service.removeVariableByName(user, name);
+    public boolean removeVariable(String id) {
+        return service.removeVariable(user, id);
     }
 
-    public boolean renameVariable(String name, String newName) {
-        VariableDTO variable = getVariableByName(name);
+    public boolean editVariable(String id, String name, String output) {
+        CustomVariableEntity variable = service.getVariable(user, id);
         if (variable == null) return false;
-        if (addVariable(newName, variable.getOutput())) {
-            removeVariableByName(name);
-            return true;
-        }
-        return false;
+
+        variable.setVariable(name);
+        variable.setOutput(output);
+
+        service.save(variable);
+
+        return true;
     }
 
 }

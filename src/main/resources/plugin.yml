@@ -1,6 +1,6 @@
-name: "customvariables"
+name: "CustomVariables"
 main: "net.twasiplugin.customvariables.CustomVariablePlugin"
-version: "1.0-SNAPSHOT"
+version: "1.0"
 author: "Twasi-Team"
 
 commands:
@@ -13,15 +13,16 @@ permissions:
   - "net.twasi.variables.delete"
 
 api: |
-  type VariableCollection {
+  type CustomVariables {
     variableByName(varName: String): Variable,
     allVariables: [Variable],
     addVariable(name: String, output: String): Boolean,
-    removeVariableByName(name: String): Boolean,
-    renameVariable(name: String, newName: String): Boolean
+    removeVariable(id: String): Boolean,
+    editVariable(id: String, name: String, output: String): Boolean
   }
 
   type Variable {
+    id: String,
     name: String,
     output: String
   }

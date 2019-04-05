@@ -37,8 +37,21 @@ public class CustomVariableService implements IService {
         return true;
     }
 
+    public boolean removeVariable(User user, String id) {
+        CustomVariableEntity variable = repo.getById(id);
+        return removeVariableByName(user, variable.getVariable());
+    }
+
     public CustomVariableEntity getVariableByName(User user, String varName) {
         return repo.getVariableByUserAndName(user, varName);
+    }
+
+    public void save(CustomVariableEntity entity) {
+        repo.commit(entity);
+    }
+
+    public CustomVariableEntity getVariable(User user, String id) {
+        return repo.getVariableByUserAndId(user, id);
     }
 
     public boolean addVariable(CustomVariableEntity entity) {

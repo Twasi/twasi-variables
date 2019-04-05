@@ -21,4 +21,8 @@ public class VariableDTO {
     public String getOutput() {
         return entity.getOutput();
     }
+
+    public String getId() {
+        return entity.getId().toString();
+    }
 }

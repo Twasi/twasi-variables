@@ -6,7 +6,7 @@ import net.twasiplugin.customvariables.api.models.VariableCollectionDTO;
 
 public class CustomVariableResolver extends TwasiCustomResolver {
 
-    public VariableCollectionDTO getVariableCollection(String token) {
+    public VariableCollectionDTO getCustomvariables(String token) {
         User user = getUser(token);
         if (user == null) return null;
         return new VariableCollectionDTO(user);

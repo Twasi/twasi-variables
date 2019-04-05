@@ -11,3 +11,16 @@ permissions:
   - "net.twasi.variables.update"
   - "net.twasi.variables.create"
   - "net.twasi.variables.delete"
+
+api: |
+  type VariableCollection {
+    variableByName(varName: String): Variable,
+    allVariables: [Variable],
+    addVariable(name: String, output: String): Boolean,
+    removeVariableByName(name: String)
+  }
+
+  type Variable {
+    name: String,
+    output: String
+  }

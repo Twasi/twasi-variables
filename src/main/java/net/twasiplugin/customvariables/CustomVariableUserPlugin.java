@@ -1,6 +1,5 @@
 package net.twasiplugin.customvariables;
 
-import com.sun.javafx.collections.MappingChange;
 import net.twasi.core.plugin.api.TwasiUserPlugin;
 import net.twasi.core.plugin.api.TwasiVariable;
 import net.twasi.core.plugin.api.customcommands.TwasiCustomCommand;

@@ -42,7 +42,6 @@ public class VariableCollectionDTO {
         variable.setOutput(output);
 
         service.save(variable);
-
         return true;
     }
 

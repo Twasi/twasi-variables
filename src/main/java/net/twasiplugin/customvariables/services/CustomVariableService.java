@@ -30,7 +30,7 @@ public class CustomVariableService implements IService {
 
     public boolean removeVariableByName(User user, String varName) {
         CustomVariableUserPlugin userPlugin = getUserPluginByUser(user);
-        if (userPlugin != null) userPlugin.getRegisteredVars().remove(varName);
+        if (userPlugin != null) userPlugin.delVar(varName);
         CustomVariableEntity entity = repo.getVariableByUserAndName(user, varName);
         if (entity == null) return false;
         repo.remove(entity);
@@ -48,6 +48,10 @@ public class CustomVariableService implements IService {
 
     public void save(CustomVariableEntity entity) {
         repo.commit(entity);
+        try {
+            getUserPluginByUser(entity.getUser()).loadVars();
+        } catch (Exception ignored) {
+        }
     }
 
     public CustomVariableEntity getVariable(User user, String id) {
@@ -59,7 +63,7 @@ public class CustomVariableService implements IService {
         repo.add(entity);
         CustomVariableUserPlugin userPlugin = getUserPluginByUser(entity.getUser());
         if (userPlugin != null)
-            userPlugin.getRegisteredVars().put(entity.getVariable(), new TwasiCustomVariable(userPlugin, entity));
+            userPlugin.setVar(entity.getVariable(), new TwasiCustomVariable(userPlugin, entity));
         return true;
     }
 

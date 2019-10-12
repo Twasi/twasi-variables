@@ -1,6 +1,7 @@
 package net.twasiplugin.customvariables.commands;
 
 import net.twasi.core.database.models.User;
+import net.twasi.core.plugin.api.TwasiUserPlugin;
 import net.twasi.core.plugin.api.customcommands.TwasiCustomCommandEvent;
 import net.twasi.core.plugin.api.customcommands.TwasiPluginCommand;
 import net.twasi.core.services.ServiceRegistry;
@@ -15,9 +16,9 @@ public class SetVariableCommand extends TwasiPluginCommand {
     private final CustomVariableUserPlugin tup;
     private final CustomVariableRepository repo;
 
-    public SetVariableCommand(CustomVariableUserPlugin twasiUserPlugin) {
+    public SetVariableCommand(TwasiUserPlugin twasiUserPlugin) {
         super(twasiUserPlugin);
-        this.tup = twasiUserPlugin;
+        this.tup = (CustomVariableUserPlugin) twasiUserPlugin;
         repo = ServiceRegistry.get(DataService.class).get(CustomVariableRepository.class);
     }
 
@@ -59,7 +60,7 @@ public class SetVariableCommand extends TwasiPluginCommand {
                     repo.add(entity);
                     e.reply(getTranslation("twasi.variables.created", name, sender));
                 }
-                tup.getRegisteredVars().put(name.toLowerCase(), new TwasiCustomVariable(tup, entity));
+                tup.setVar(name.toLowerCase(), new TwasiCustomVariable(tup, entity));
             } else {
                 if (entity != null) {
                     e.reply(getTranslation("twasi.variables.content", sender, name, entity.getOutput(), name));

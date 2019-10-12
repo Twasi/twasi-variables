@@ -16,10 +16,10 @@ public class DelVariableCommand extends TwasiPluginCommand {
     private final CustomVariableUserPlugin tup;
     private final CustomVariableRepository repo;
 
-    public DelVariableCommand(CustomVariableUserPlugin twasiUserPlugin) {
+    public DelVariableCommand(TwasiUserPlugin twasiUserPlugin) {
         super(twasiUserPlugin);
         repo = ServiceRegistry.get(DataService.class).get(CustomVariableRepository.class);
-        tup = twasiUserPlugin;
+        tup = (CustomVariableUserPlugin) twasiUserPlugin;
     }
 
     @Override
@@ -33,7 +33,7 @@ public class DelVariableCommand extends TwasiPluginCommand {
             CustomVariableEntity entity = repo.getVariableByUserAndName(user, name);
             if (entity != null) {
                 repo.remove(entity);
-                tup.getRegisteredVars().remove(entity.getVariable().toLowerCase());
+                tup.delVar(entity.getVariable());
                 e.reply(getTranslation("twasi.variables.deleted", sender, entity.getVariable()));
             } else {
                 e.reply(getTranslation("twasi.variables.invalidvar", sender, name));

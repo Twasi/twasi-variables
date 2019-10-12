@@ -21,13 +21,10 @@ import java.util.List;
 public class CustomVariableUserPlugin extends TwasiUserPlugin {
 
     private HashMap<String, TwasiCustomVariable> variables = new HashMap<>();
-    private List<TwasiPluginCommand> commands;
 
     public CustomVariableUserPlugin() {
-        this.commands = Arrays.asList(
-                new DelVariableCommand(this),
-                new SetVariableCommand(this)
-        );
+        registerCommand(DelVariableCommand.class);
+        registerCommand(SetVariableCommand.class);
     }
 
     @Override
@@ -44,23 +41,31 @@ public class CustomVariableUserPlugin extends TwasiUserPlugin {
 
     @Override
     public void onEnable(TwasiEnableEvent e) {
+        loadVars();
+    }
+
+    public void loadVars(){
+        variables = new HashMap<>();
         for (CustomVariableEntity var : ServiceRegistry.get(DataService.class).get(CustomVariableRepository.class).getVariablesByUser(getTwasiInterface().getStreamer().getUser())) {
             variables.put(var.getVariable().toLowerCase(), new TwasiCustomVariable(this, var));
         }
     }
-
 
     @Override
     public List<TwasiVariable> getVariables() {
         return new ArrayList<>(this.variables.values());
     }
 
-    public HashMap<String, TwasiCustomVariable> getRegisteredVars() {
-        return this.variables;
+    public void setVar(String name, TwasiCustomVariable var) {
+        delVar(name);
+        this.variables.put(name.toLowerCase(), var);
     }
 
-    @Override
-    public List<TwasiPluginCommand> getCommands() {
-        return this.commands;
+    public void delVar(String name) {
+        this.variables.remove(name.toLowerCase());
+    }
+
+    public HashMap<String, TwasiCustomVariable> getRegisteredVars() {
+        return this.variables;
     }
 }
